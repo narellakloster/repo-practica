@@ -13,7 +13,8 @@ public class Inscripcion {
 	private Integer cicloLectivo;
 	private Docente docente;
 	private Estado estado;
-
+	public Integer limiteMaximo;
+	public Integer alumnosInscriptos;
 	public Inscripcion() {
 		this.id = ID_GENERATOR++;
 	}

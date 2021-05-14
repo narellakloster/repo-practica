@@ -5,6 +5,7 @@ import java.util.List;
 
 import isi.died.parcial01.ejercicio02.db.BaseDeDatos;
 import isi.died.parcial01.ejercicio02.dominio.*;
+import isi.died.parcial01.ejercicio02.dominio.Inscripcion.Estado;
 
 
 public class MySysAcadImpl implements MySysAcad {
@@ -40,7 +41,7 @@ public class MySysAcadImpl implements MySysAcad {
 		a.addCursada(insc);
 		m.addInscripcion(insc);
 		// DESCOMENTAR Y gestionar excepcion
-		// DB.guardar(insc);
+			//DB.guardar(insc);
 	}
 
 	@Override
@@ -50,7 +51,20 @@ public class MySysAcadImpl implements MySysAcad {
 		d.agregarExamen(e);
 		m.addExamen(e);
 		// DESCOMENTAR Y gestionar excepcion
-		// DB.guardar(e);
+		//DB.guardar(e);
+	}
+	
+	//PUNTO 3-1
+	public void registrarNota(Inscripcion i, Examen e, Materia m, int n) {
+		
+		e.setNota(n);
+		if(n>= 6) {
+			Alumno alumno= e.getAlumno();
+			Materia materia= e.getMateria();
+			i.setInscripto(alumno);
+			i.setMateria(materia);
+			i.setEstado(Estado.PROMOCIONADO);
+		}
 	}
 	
 
